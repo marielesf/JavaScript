@@ -1,0 +1,98 @@
+<html>
+<head>
+<style>
+body {
+    background-color: purple;
+    text-align: center;
+    color: white;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function somarValores(){
+      var s1 = document.getElementById("s1").value;
+      var s2 = document.getElementById("s2").value;
+      var s3 = parseInt(s1) + parseInt(s2);
+      document.getElementById('resultado').innerHTML = s3;
+    }
+
+    var rCerto;
+    function calcular(){
+      var n1 = document.getElementById("n1").innerHTML = Math.floor(Math.random() * 101);
+      var n2 = document.getElementById("n2").innerHTML = Math.floor(Math.random() * 101);
+      var x = Math.floor((Math.random() * 3) + 1);
+      rCerto = n1 + n2;
+      document.getElementById("result" + x).innerHTML = rCerto;
+      verX(x, rCerto);
+    }
+
+    function verX(x, rCerto){
+    if(x == 1){
+      do{
+       valor1 = Math.floor(Math.random() * 101);
+       valor2 = Math.floor(Math.random() * 101);
+     }while(valor1  == rCerto || valor2 == rCerto)
+      document.getElementById("result2").innerHTML =valor1;
+      document.getElementById("result3").innerHTML = valor2;
+    }
+    if(x == 2){
+      do{
+       valor1 = Math.floor(Math.random() * 101);
+       valor2 = Math.floor(Math.random() * 101);
+     }while(valor1 == rCerto || rCerto == valor2)
+      document.getElementById("result1").innerHTML =valor1;
+      document.getElementById("result3").innerHTML = valor2;
+    }
+    if(x == 3){
+      do{
+       valor1 = Math.floor(Math.random() * 101);
+       valor2 = Math.floor(Math.random() * 101);
+     }while(valor1 == rCerto || valor2 == rCerto)
+      document.getElementById("result1").innerHTML =valor1;
+      document.getElementById("result2").innerHTML = valor2;
+    }
+  }
+
+  function respostaCerta (id){
+    var valor = document.getElementById(id).innerHTML;
+    if(rCerto == valor){
+      alert("OK lindo!");
+      calcular();
+    }
+    else {
+      alert("ERRROU!");
+    }
+  }
+  </script>
+
+<fieldset>
+  <legend>Somatório</legend>
+    <label>Valor 1:</label>
+      <input id="s1" type="text"/>
+    <label>Valor 2: </label>
+      <input id="s2" type="text"/>
+  <button id="somar" onclick="somarValores()">Somar</button>
+  <div id="resultado"></div>
+</fieldset>
+
+<br />
+<br />
+<fieldset>
+  <legend OnMouseOver="calcular()">Somatório</legend>
+  <p id="n1">valor 1</p>
+  <p id="mais">+</p>
+  <p id="n2">valor 2</p>
+  <button id="result1" onClick="respostaCerta('result1')">Resultado </button>
+  <button id="result2" onClick="respostaCerta('result2')">Resultado </button>
+  <button id="result3" onClick="respostaCerta('result3')">Resultado </button>
+</fieldset>
+
+</body>
+</html>
